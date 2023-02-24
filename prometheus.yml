@@ -9,7 +9,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-          # - alertmanager:9093
+          #- alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -28,4 +28,10 @@ scrape_configs:
     static_configs:
       - targets: 
         - "localhost:9090"
-        - "10.250.X.X:9100"
+        - "10.250.6.3:9100"
+
+  - job_name: "elasticbeanstalk"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets:
+        - "hello-springrest.eba-hmppdsfz.eu-west-1.elasticbeanstalk.com:80"
